@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RM & IPR — Complete Study Guide</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root {
+    --deep-navy: #091B29;
+    --dark-slate: #1D3448;
+    --steel-blue: #34495D;
+    --muted-blue: #4F6173;
+    --light-blue-gray: #909FAE;
+    --pale-silver: #B7C7D6;
+    --bg-light: #EAF0F6;
+    --bg-page: #F2F6FA;
+    --white: #FFFFFF;
+    --accent: #2E7DC5;
+    --accent-light: #5BA3E0;
+    --highlight: #C8DAEB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg-page);
+    color: var(--deep-navy);
+    line-height: 1.65;
+  }
+
+  /* ── HEADER ─────────────────────────────────────── */
+  header {
+    background: linear-gradient(135deg, var(--deep-navy) 0%, var(--dark-slate) 60%, var(--steel-blue) 100%);
+    padding: 56px 40px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 60px,
+      rgba(255,255,255,0.02) 60px,
+      rgba(255,255,255,0.02) 61px
+    );
+  }
+  header::after {
+    content: '';
+    position: absolute;
+    bottom: -1px; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--pale-silver), var(--accent));
+  }
+  .header-inner { max-width: 1100px; margin: 0 auto; position: relative; }
+  .header-eyebrow {
+    font-size: 11px; font-weight: 600; letter-spacing: 3px;
+    color: var(--pale-silver); text-transform: uppercase; margin-bottom: 12px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  header h1 {
+    font-size: clamp(28px, 5vw, 48px); font-weight: 700;
+    color: var(--white); letter-spacing: -0.5px; line-height: 1.15;
+  }
+  header h1 span { color: var(--pale-silver); font-weight: 300; }
+  .header-meta {
+    margin-top: 20px; display: flex; gap: 24px; flex-wrap: wrap;
+  }
+  .badge {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: var(--pale-silver);
+    padding: 6px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 500;
+  }
+
+  /* ── NAV ─────────────────────────────────────────── */
+  nav {
+    background: var(--dark-slate);
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .nav-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; gap: 0; overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .nav-inner::-webkit-scrollbar { display: none; }
+  nav a {
+    display: block; padding: 14px 20px;
+    color: var(--light-blue-gray); text-decoration: none;
+    font-size: 13px; font-weight: 500; white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+  nav a:hover { color: var(--white); border-bottom-color: var(--accent); }
+
+  /* ── LAYOUT ──────────────────────────────────────── */
+  main { max-width: 1100px; margin: 0 auto; padding: 48px 24px; }
+
+  /* ── MODULE SECTION ──────────────────────────────── */
+  .module {
+    margin-bottom: 64px;
+    scroll-margin-top: 60px;
+  }
+  .module-header {
+    display: flex; align-items: flex-start; gap: 20px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--pale-silver);
+  }
+  .module-number {
+    background: linear-gradient(135deg, var(--deep-navy), var(--steel-blue));
+    color: var(--white); font-size: 13px; font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    padding: 8px 14px; border-radius: 6px;
+    white-space: nowrap; align-self: flex-start; margin-top: 4px;
+  }
+  .module h2 {
+    font-size: 26px; font-weight: 700; color: var(--deep-navy);
+    line-height: 1.2;
+  }
+  .module h2 small {
+    display: block; font-size: 14px; font-weight: 400;
+    color: var(--muted-blue); margin-top: 4px;
+  }
+
+  /* ── TOPIC CARD ───────────────────────────────────── */
+  .topic {
+    background: var(--white);
+    border: 1px solid var(--pale-silver);
+    border-radius: 10px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+  .topic:hover { box-shadow: 0 4px 20px rgba(9,27,41,0.1); }
+  .topic-head {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 24px;
+    background: linear-gradient(90deg, var(--bg-light), var(--white));
+    border-bottom: 1px solid var(--pale-silver);
+    cursor: pointer;
+  }
+  .topic-icon {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--dark-slate), var(--steel-blue));
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .topic-icon svg { width: 18px; height: 18px; stroke: var(--pale-silver); fill: none; stroke-width: 1.8; }
+  .topic-head h3 {
+    font-size: 15px; font-weight: 600; color: var(--deep-navy); flex: 1;
+  }
+  .stars { color: var(--accent); font-size: 13px; letter-spacing: 1px; }
+  .topic-body { padding: 24px; }
+
+  /* ── DEFINITION BOX ───────────────────────────────── */
+  .def-box {
+    background: linear-gradient(135deg, var(--bg-light), #e4eef8);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+  }
+  .def-box .label {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted-blue);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 6px;
+  }
+  .def-box p { font-size: 14px; color: var(--dark-slate); line-height: 1.7; }
+
+  /* ── KEY POINTS LIST ──────────────────────────────── */
+  .key-list { list-style: none; }
+  .key-list li {
+    display: flex; gap: 10px; align-items: flex-start;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--bg-light);
+    font-size: 14px; color: var(--steel-blue);
+  }
+  .key-list li:last-child { border-bottom: none; }
+  .key-list li::before {
+    content: '▸';
+    color: var(--accent); font-size: 12px;
+    flex-shrink: 0; margin-top: 2px;
+  }
+
+  /* ── TABLE ────────────────────────────────────────── */
+  .styled-table {
+    width: 100%; border-collapse: collapse;
+    font-size: 13px; margin: 16px 0;
+  }
+  .styled-table thead tr {
+    background: linear-gradient(90deg, var(--dark-slate), var(--steel-blue));
+    color: var(--white);
+  }
+  .styled-table th {
+    padding: 12px 16px; text-align: left;
+    font-weight: 600; font-size: 12px; letter-spacing: 0.5px;
+  }
+  .styled-table tbody tr:nth-child(even) { background: var(--bg-light); }
+  .styled-table tbody tr:hover { background: var(--highlight); }
+  .styled-table td { padding: 10px 16px; color: var(--steel-blue); border-bottom: 1px solid var(--pale-silver); }
+  .styled-table td:first-child { font-weight: 600; color: var(--dark-slate); }
+
+  /* ── FLOWCHART ────────────────────────────────────── */
+  .flowchart-wrap {
+    background: linear-gradient(135deg, #E8F0F8, #F2F7FC);
+    border: 1px solid var(--pale-silver);
+    border-radius: 12px;
+    padding: 32px 24px;
+    margin: 16px 0;
+    overflow-x: auto;
+  }
+  .flowchart-title {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--muted-blue);
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 24px; text-align: center;
+  }
+  .flow-chain {
+    display: flex; align-items: center;
+    flex-wrap: wrap; gap: 0;
+    justify-content: center;
+  }
+  .flow-node {
+    background: linear-gradient(135deg, var(--dark-slate), var(--steel-blue));
+    color: var(--white);
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 12px; font-weight: 500;
+    text-align: center; min-width: 90px;
+    line-height: 1.35;
+  }
+  .flow-node.start {
+    background: linear-gradient(135deg, var(--deep-navy), var(--dark-slate));
+  }
+  .flow-node.end {
+    background: linear-gradient(135deg, var(--accent), #1a5a96);
+  }
+  .flow-node.diamond {
+    background: linear-gradient(135deg, var(--muted-blue), var(--steel-blue));
+    transform: none;
+    border-radius: 6px;
+    position: relative;
+  }
+  .flow-arrow {
+    color: var(--muted-blue); font-size: 18px;
+    padding: 0 6px; flex-shrink: 0;
+  }
+  .flow-row { display: flex; align-items: center; justify-content: center; width: 100%; margin-bottom: 0; }
+  .flow-col { display: flex; flex-direction: column; align-items: center; }
+  .flow-down { color: var(--muted-blue); font-size: 18px; margin: 4px 0; }
+  .flow-branch {
+    display: flex; gap: 32px; align-items: flex-start;
+    margin-top: 0;
+  }
+  .branch-arm { display: flex; flex-direction: column; align-items: center; }
+  .branch-label {
+    font-size: 10px; font-weight: 600; letter-spacing: 1px;
+    color: var(--muted-blue); font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 4px;
+  }
+  .flow-loop {
+    background: rgba(255,255,255,0.7);
+    border: 1px dashed var(--light-blue-gray);
+    border-radius: 8px; padding: 8px 16px;
+    font-size: 11px; color: var(--muted-blue);
+    text-align: center; margin-top: 8px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── CRITERIA CARDS ────────────────────────────────── */
+  .criteria-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px; margin: 16px 0;
+  }
+  .criteria-card {
+    background: var(--white);
+    border: 1px solid var(--pale-silver);
+    border-top: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .criteria-card .num {
+    font-size: 28px; font-weight: 700;
+    color: var(--pale-silver); line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 8px;
+  }
+  .criteria-card h4 { font-size: 14px; font-weight: 700; color: var(--dark-slate); margin-bottom: 6px; }
+  .criteria-card p { font-size: 12px; color: var(--muted-blue); line-height: 1.6; }
+
+  /* ── HIGHLIGHT BOX ────────────────────────────────── */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--deep-navy), var(--dark-slate));
+    color: var(--pale-silver);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    font-size: 13px; line-height: 1.7;
+  }
+  .highlight-box strong { color: var(--white); }
+  .highlight-box .hl-title {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--light-blue-gray);
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 10px;
+  }
+
+  /* ── SYMBOL ROW ───────────────────────────────────── */
+  .symbol-row {
+    display: flex; gap: 16px; flex-wrap: wrap; margin: 16px 0;
+  }
+  .symbol-card {
+    flex: 1; min-width: 130px;
+    background: var(--bg-light);
+    border: 1px solid var(--pale-silver);
+    border-radius: 8px; padding: 16px;
+    text-align: center;
+  }
+  .symbol-card .sym {
+    font-size: 36px; color: var(--dark-slate);
+    font-weight: 700; line-height: 1;
+    margin-bottom: 8px;
+  }
+  .symbol-card .sym-name { font-size: 13px; font-weight: 600; color: var(--deep-navy); }
+  .symbol-card .sym-desc { font-size: 11px; color: var(--muted-blue); margin-top: 4px; }
+
+  /* ── CASE STUDY ────────────────────────────────────── */
+  .case-study {
+    background: var(--white);
+    border-left: 4px solid var(--dark-slate);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 24px;
+    margin: 16px 0;
+  }
+  .case-study .case-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent);
+    font-family: 'JetBrains Mono', monospace; margin-bottom: 8px;
+  }
+  .case-study h4 { font-size: 15px; font-weight: 700; color: var(--deep-navy); margin-bottom: 12px; }
+  .case-study ol { padding-left: 20px; }
+  .case-study ol li { font-size: 13px; color: var(--steel-blue); margin-bottom: 6px; line-height: 1.6; }
+
+  /* ── GI EXAMPLES ────────────────────────────────── */
+  .gi-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px; margin: 16px 0;
+  }
+  .gi-chip {
+    background: var(--bg-light);
+    border: 1px solid var(--pale-silver);
+    border-radius: 8px; padding: 12px 14px;
+    font-size: 12px;
+  }
+  .gi-chip .gi-name { font-weight: 700; color: var(--dark-slate); }
+  .gi-chip .gi-type { font-size: 10px; color: var(--accent); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin: 2px 0; }
+  .gi-chip .gi-state { font-size: 11px; color: var(--muted-blue); }
+
+  /* ── GRID 2COL ─────────────────────────────────── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 16px 0; }
+  @media(max-width: 640px) { .grid-2 { grid-template-columns: 1fr; } }
+
+  .info-panel {
+    background: var(--bg-light);
+    border: 1px solid var(--pale-silver);
+    border-radius: 8px; padding: 16px;
+  }
+  .info-panel h4 { font-size: 13px; font-weight: 700; color: var(--dark-slate); margin-bottom: 10px; }
+
+  /* ── IP TREE ────────────────────────────────────── */
+  .ip-tree {
+    display: flex; gap: 24px; flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .ip-branch {
+    flex: 1; min-width: 200px;
+    background: var(--white);
+    border: 1px solid var(--pale-silver);
+    border-top: 3px solid var(--dark-slate);
+    border-radius: 8px; padding: 16px;
+  }
+  .ip-branch.right { border-top-color: var(--accent); }
+  .ip-branch h4 { font-size: 13px; font-weight: 700; color: var(--deep-navy); margin-bottom: 10px; }
+  .ip-branch ul { list-style: none; }
+  .ip-branch ul li {
+    font-size: 12px; color: var(--steel-blue);
+    padding: 4px 0; border-bottom: 1px solid var(--bg-light);
+    display: flex; gap: 8px; align-items: center;
+  }
+  .ip-branch ul li::before { content: '·'; color: var(--accent); font-size: 20px; line-height: 0; }
+
+  /* ── NUMBERS GRID ───────────────────────────────── */
+  .numbers-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px; margin: 16px 0;
+  }
+  .num-card {
+    background: linear-gradient(135deg, var(--dark-slate), var(--steel-blue));
+    border-radius: 8px; padding: 14px 16px; color: var(--white);
+  }
+  .num-card .big-num {
+    font-size: 24px; font-weight: 700;
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--pale-silver); line-height: 1;
+    margin-bottom: 4px;
+  }
+  .num-card .num-label { font-size: 11px; color: var(--light-blue-gray); line-height: 1.4; }
+
+  /* ── DIVIDER ─────────────────────────────────────── */
+  .section-divider {
+    display: flex; align-items: center; gap: 12px;
+    margin: 32px 0 20px;
+  }
+  .section-divider .line { flex: 1; height: 1px; background: var(--pale-silver); }
+  .section-divider .label {
+    font-size: 10px; font-weight: 700; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--light-blue-gray);
+    font-family: 'JetBrains Mono', monospace;
+    white-space: nowrap;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  footer {
+    background: var(--deep-navy);
+    border-top: 1px solid var(--dark-slate);
+    padding: 32px 40px;
+    text-align: center;
+    color: var(--muted-blue);
+    font-size: 12px;
+  }
+  footer strong { color: var(--pale-silver); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="header-eyebrow">VTU — Complete Study Reference</div>
+    <h1>Research Methodology <span>&amp; Intellectual Property Rights</span></h1>
+    <div class="header-meta">
+      <span class="badge">Module 1 — Research Fundamentals</span>
+      <span class="badge">Module 2 — Literature &amp; Citations</span>
+      <span class="badge">Module 3 — Patents</span>
+      <span class="badge">Module 4 — Copyright &amp; Trademarks</span>
+      <span class="badge">Module 5 — Designs &amp; GI</span>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#m1">Module 1</a>
+    <a href="#m2">Module 2</a>
+    <a href="#m3">Module 3</a>
+    <a href="#m4a">Module 4A — Copyright</a>
+    <a href="#m4b">Module 4B — Trademarks</a>
+    <a href="#m5a">Module 5A — Designs</a>
+    <a href="#m5b">Module 5B — GI</a>
+    <a href="#m5c">Module 5C — Case Studies</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 1
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m1">
+  <div class="module-header">
+    <div class="module-number">MOD 01</div>
+    <div>
+      <h2>Research Fundamentals &amp; Ethics
+        <small>6 core sub-topics — Process flowchart is near-guaranteed for 4–6 marks</small>
+      </h2>
+    </div>
+  </div>
+
+  <!-- 1. Definition -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <h3>1. Meaning of Research — Definition</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box">
+        <div class="label">Definition (memorise one clean version)</div>
+        <p>Research is a careful, well-defined, objective, and systematic search for knowledge — driven by curiosity about something unknown and useful — so as to make an <strong>original contribution</strong> that expands the existing knowledge base.</p>
+      </div>
+      <p style="font-size:13px; color:var(--muted-blue); margin-bottom:8px;"><strong style="color:var(--dark-slate)">Add for 4–5 mark questions:</strong></p>
+      <ul class="key-list">
+        <li>It involves formulating a hypothesis, analysing data, making deductions, and checking whether conclusions fit the hypothesis.</li>
+        <li>It is the process of creating knowledge that does not yet exist.</li>
+        <li>Thus research is <em>"an art of scientific investigation."</em></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. Research Process Flowchart -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+      <h3>2. Research Process Flow Cycle — Flowchart</h3>
+      <span class="stars">★★★ (Near-guaranteed 4–6 marks)</span>
+    </div>
+    <div class="topic-body">
+      <div class="flowchart-wrap">
+        <div class="flowchart-title">The 7-Stage Research Process (with F and FF loops)</div>
+        <div class="flow-col">
+          <div class="flow-chain">
+            <div class="flow-node start">I. Define<br>Research<br>Problem</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">II. Review<br>Literature,<br>Concepts &amp;<br>Theories</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">III. Formulate<br>Hypotheses</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">IV. Design<br>Research<br>(incl. sample)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">V. Collect<br>Data</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node">VI. Analyse<br>Data (Test<br>Hypotheses)</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node end">VII. Interpret<br>&amp; Report</div>
+          </div>
+          <div style="display:flex;gap:32px;margin-top:20px;flex-wrap:wrap;justify-content:center;">
+            <div class="flow-loop">← F (Feedback): Controls the sub-system to which it is transmitted<br>(arrows looping backward, e.g. data collection → design)</div>
+            <div class="flow-loop">FF (Feed-forward): Provides criteria for evaluation →<br>(arrows looping forward to later stages)</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted-blue);margin-bottom:12px;"><strong style="color:var(--dark-slate)">The 11 detailed steps behind the 7-box diagram:</strong></p>
+      <div class="grid-2">
+        <ul class="key-list">
+          <li>1. Formulating the research problem</li>
+          <li>2. Extensive literature survey</li>
+          <li>3. Development of working hypotheses</li>
+          <li>4. Preparing the research design</li>
+          <li>5. Determining sample design</li>
+          <li>6. Collecting the data</li>
+        </ul>
+        <ul class="key-list">
+          <li>7. Execution of the project</li>
+          <li>8. Analysis of data</li>
+          <li>9. Hypothesis-testing</li>
+          <li>10. Generalizations and interpretation</li>
+          <li>11. Preparation of the report/thesis</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Motivation -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <h3>3. Motivation in Engineering Research</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="criteria-grid">
+        <div class="criteria-card">
+          <div class="num">01</div>
+          <h4>Intrinsic Motivation</h4>
+          <p>Interest, challenge, learning, meaning, purpose. Linked to strong creative performance.</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num">02</div>
+          <h4>Extrinsic Motivation</h4>
+          <p>Rewards — money, fame, awards, praise, status. Strong motivators but may block creativity. (e.g. a patent makes you rich and famous.)</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num">03</div>
+          <h4>Influences from Others</h4>
+          <p>Competition, collaboration, commitment, encouragement. (e.g. "my friends are doing research, so should I.")</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num">04</div>
+          <h4>Personal Motivation</h4>
+          <p>Solving unsolved problems, intellectual joy, service to community, respectability.</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num">05</div>
+          <h4>Intrinsic + Extrinsic Mix</h4>
+          <p>Wanting to do better than the world has, improving state of the art, contributing to society, fulfilling historical legacy.</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num">06</div>
+          <h4>Other Factors</h4>
+          <p>Government directives, funding opportunities, terms of employment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Types -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg></div>
+      <h3>4. Types of Engineering Research</h3>
+      <span class="stars">★★ (2 marks list + 8 marks explanation)</span>
+    </div>
+    <div class="topic-body">
+      <table class="styled-table">
+        <thead><tr><th>Type</th><th>Meaning</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Descriptive</td><td>Describes present state; researcher has no control over variables — only reports as-is (comparative, correlational, fact-finding)</td><td>Surveys of "what is"</td></tr>
+          <tr><td>Analytical</td><td>Uses already available facts, analyses and critically evaluates them. (Can overlap with descriptive.)</td><td>Critically evaluating published data</td></tr>
+          <tr><td>Applied</td><td>Solves an immediate practical problem facing an organisation.</td><td>Identifying social/economic trends</td></tr>
+          <tr><td>Fundamental (Basic/Pure)</td><td>Concerned with generalizations and forming theory.</td><td>Pure mathematics, natural phenomena</td></tr>
+          <tr><td>Quantitative</td><td>Uses statistical observations of a large number of representative cases.</td><td>Large-sample statistics</td></tr>
+          <tr><td>Qualitative</td><td>Relies on a few non-representative cases or verbal narrative (behavioural).</td><td>Clustering effect at road intersections</td></tr>
+          <tr><td>Conceptual</td><td>Related to abstract ideas/theory; used by philosophers/thinkers.</td><td>Reinterpreting existing concepts</td></tr>
+          <tr><td>Empirical</td><td>Data-based; relies on experience/observation/experiment; researcher controls and manipulates variables.</td><td>Experimental research — strongest support for a hypothesis</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. Ethics -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>5. Ethics in Engineering Research + 3 Ways to Credit Contributions</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box">
+        <div class="label">Definition</div>
+        <p>Ethics = a set of rules distinguishing acceptable from unacceptable conduct — right from wrong.</p>
+      </div>
+      <ul class="key-list" style="margin-bottom:16px;">
+        <li>Learnt early but moral development continues; everyone shares norms but interpretation differs.</li>
+        <li>Ethics ≠ laws, but laws often follow ethics because ethics are shared values.</li>
+        <li>International norm milestone: <strong>Nuremberg Code, 1947.</strong></li>
+        <li>Per Whitbeck, research-credit issues trace to the British Royal Society (17th century), which gave priority to whoever first submitted findings.</li>
+        <li><strong>Research ethics</strong> = examines the appropriate application of research outcomes.</li>
+        <li><strong>Responsible conduct of research</strong> = the way the work is undertaken. <em>(These are NOT interchangeable — common exam trap.)</em></li>
+      </ul>
+      <div class="highlight-box">
+        <div class="hl-title">3 Ways Credit is Attributed in Publications</div>
+        <strong>1. Authorship</strong> — of the intended publication<br>
+        <strong>2. Citation</strong> — of previously published/presented work<br>
+        <strong>3. Acknowledgement</strong> — of inputs to the present research
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. Misconduct -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg></div>
+      <h3>6. Types of Research Misconduct</h3>
+      <span class="stars">★★★ (Asked repeatedly)</span>
+    </div>
+    <div class="topic-body">
+      <div class="criteria-grid">
+        <div class="criteria-card">
+          <div class="num" style="color:#C0392B;">F1</div>
+          <h4>Fabrication</h4>
+          <p>Illegitimate <em>creation</em> of data. Making up data/experiments because you "know" the result but can't wait (timeline pressure).</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num" style="color:#C0392B;">F2</div>
+          <h4>Falsification</h4>
+          <p>Inappropriate <em>alteration</em> of data. Misrepresenting/altering real data to fit a desired hypothesis.</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num" style="color:#C0392B;">P</div>
+          <h4>Plagiarism</h4>
+          <p>Taking others' work without attribution. Self-plagiarism (reusing your own published work) is also misconduct. A low similarity score ≠ no plagiarism — human eye needed.</p>
+        </div>
+        <div class="criteria-card">
+          <div class="num" style="color:#C0392B;">OA</div>
+          <h4>Other Aspects</h4>
+          <p>Fraud (deception + damage); simultaneous/double submission; not reporting known mistakes.</p>
+        </div>
+      </div>
+      <div class="def-box" style="margin-top:8px;">
+        <div class="label">Bonus — Ethical Issues in Authorship</div>
+        <p>Guest/gift authorship · Career-boost authorship · Career-preservation authorship · Ghost co-authorship · Reciprocal authorship · Double submission</p>
+      </div>
+    </div>
+  </div>
+</section><!-- /m1 -->
+
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 2
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m2">
+  <div class="module-header">
+    <div class="module-number">MOD 02</div>
+    <div>
+      <h2>Literature Review, Citations &amp; Knowledge Flow
+        <small>Knowledge-flow diagram appears almost every paper</small>
+      </h2>
+    </div>
+  </div>
+
+  <!-- 1. Lit Review -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+      <h3>1. Importance of Literature Review &amp; Technical Reading</h3>
+      <span class="stars">★★★ (5+5 marks split)</span>
+    </div>
+    <div class="topic-body">
+      <div class="grid-2">
+        <div class="info-panel">
+          <h4>Why Literature Review Matters</h4>
+          <ul class="key-list">
+            <li>Use existing content/ideas/approaches to correctly identify the (vaguely known) problem and advocate a suitable approach.</li>
+            <li>Confirms your research will contribute something new and innovative.</li>
+            <li>Quality judged by: appropriate breadth &amp; depth, clarity, rigor, consistency, effective analysis.</li>
+            <li>Two-step process: (i) identify major topics/subtopics/concepts; (ii) place each source's citation in the correct category.</li>
+            <li>Continuous and cyclical — you go back and forth till the project ends.</li>
+          </ul>
+        </div>
+        <div class="info-panel">
+          <h4>Technical Reading — Skimming Order</h4>
+          <ul class="key-list">
+            <li><strong>1. Title &amp; keywords</strong> → if not interesting, stop.</li>
+            <li><strong>2. Abstract</strong> → overview in minimum time; if not important, stop.</li>
+            <li><strong>3. Conclusions</strong> → check relevance.</li>
+            <li><strong>4. Figures, tables, captions</strong> → quick broad idea.</li>
+            <li><strong>5. Introduction</strong> → background + why they did the study.</li>
+            <li><strong>6. Results &amp; Discussion</strong> → the heart of the paper.</li>
+            <li><strong>7. Experimental setup/modelling</strong> → only if deeply interested.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. New & Existing Knowledge -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg></div>
+      <h3>2. New &amp; Existing Knowledge — Foundation Relationship</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <ul class="key-list">
+        <li>New knowledge can only be interpreted within the context of what is already known — it cannot exist without the foundation of existing knowledge.</li>
+        <li>Existing knowledge is needed to prove a problem exists and is important (context, significance, originality, tools).</li>
+        <li>You show your knowledge is original by describing what already exists and pointing out the missing part.</li>
+        <li>A strong foundation (lots of references) makes your new knowledge harder to challenge.</li>
+        <li>Textbooks usually hold older established knowledge; research papers hold newer work. <strong>Read textbooks first.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. Bibliographic Databases -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+      <h3>3. Bibliographic Databases + Web of Science</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box">
+        <div class="label">Definition</div>
+        <p>Bibliographic databases = "abstracting and indexing services" that collect citation info and abstracts and make them searchable. Searching several large databases avoids over-relying on one.</p>
+      </div>
+      <div class="grid-2">
+        <div class="info-panel">
+          <h4>Web of Science Features</h4>
+          <ul class="key-list">
+            <li>Formerly ISI / Thomson Reuters; includes multiple databases + specialized tools. Needs institutional license.</li>
+            <li>Search by title, topic, author, address (dropdown fields).</li>
+            <li>Sort by number of citations (high→low) or publication date.</li>
+            <li>Refine by material type, date, language.</li>
+            <li>"Cited reference search" — trace articles that cited an earlier paper.</li>
+          </ul>
+        </div>
+        <div class="info-panel">
+          <h4>Google vs Google Scholar</h4>
+          <ul class="key-list">
+            <li><strong>Google:</strong> great to start; finds free govt/org reports. Limits: "black box," no quality control, limited refinement.</li>
+            <li><strong>Google Scholar:</strong> limits to scholarly literature. Limits: some results aren't truly scholarly; not comprehensive.</li>
+            <li><strong>Search operators:</strong> OR (broadens), ( ) brackets, " " quotes (exact phrase), site:, filetype:pdf/ppt/xls</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Citations -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
+      <h3>4. Citations — Definition + Functions + 4 Failing Types</h3>
+      <span class="stars">★★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="highlight-box">
+        <div class="hl-title">The Trio — Memorise</div>
+        <strong>Citing</strong> = quoting from / referring to others' works in the text so the context is clear.<br>
+        <strong>Referencing</strong> = listing the full publication details of a cited work.<br>
+        <strong>Acknowledgment</strong> = indicating contributions to the work.<br><br>
+        <em>Cite each source twice: (i) in-text where quoted/paraphrased; (ii) in the references list at the end.</em>
+      </div>
+      <div class="grid-2" style="margin-top:16px;">
+        <div class="info-panel">
+          <h4>3 Main Functions of Citation</h4>
+          <ul class="key-list">
+            <li><strong>Verification function</strong> — lets readers check if the original source justifies the claim.</li>
+            <li><strong>Acknowledgment function</strong> — researchers get credit; affects promotion, employment, funding, reputation.</li>
+            <li><strong>Documentation function</strong> — documents scientific concepts and historical progress of a technology.</li>
+          </ul>
+        </div>
+        <div class="info-panel">
+          <h4>4 Citations That FAIL Their Purpose</h4>
+          <ul class="key-list">
+            <li><strong>Spurious</strong> — adding a citation when none is required or appropriate.</li>
+            <li><strong>Biased</strong> — citing friends with no connection, or refusing to cite genuinely significant work.</li>
+            <li><strong>Self-citations</strong> — citing your own prior work; acceptable only if genuinely relevant.</li>
+            <li><strong>Coercive</strong> — editors pressuring authors to add citations to the editor's own journal (boosts impact factor).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Knowledge Flow Diagram -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
+      <h3>5. Knowledge Flow Through Citation — Diagram</h3>
+      <span class="stars">★★★ (Appears almost every paper)</span>
+    </div>
+    <div class="topic-body">
+      <div class="flowchart-wrap">
+        <div class="flowchart-title">Knowledge Flow Citation Network</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;font-size:12px;">
+          <!-- Institutions -->
+          <div style="display:flex;gap:48px;align-items:center;">
+            <div class="flow-node start" style="min-width:110px;">Institution 1</div>
+            <div class="flow-arrow">⇒</div>
+            <div class="flow-node start" style="min-width:110px;">Institution 2</div>
+          </div>
+          <div style="display:flex;gap:240px;">
+            <div class="flow-down">↓</div>
+            <div class="flow-down">↓</div>
+          </div>
+          <!-- Authors -->
+          <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:center;">
+            <div class="flow-node" style="min-width:80px;font-size:11px;">Author K</div>
+            <div class="flow-arrow">↔</div>
+            <div class="flow-node" style="min-width:80px;font-size:11px;">Author R</div>
+            <div class="flow-arrow">↔</div>
+            <div class="flow-node" style="min-width:80px;font-size:11px;">Author U</div>
+            <div class="flow-arrow">↔</div>
+            <div class="flow-node" style="min-width:80px;font-size:11px;">Author T</div>
+            <div class="flow-arrow">↔</div>
+            <div class="flow-node" style="min-width:80px;font-size:11px;">Author I</div>
+          </div>
+          <div style="display:flex;gap:200px;">
+            <div class="flow-down">↓</div>
+            <div class="flow-down">↓</div>
+          </div>
+          <!-- Papers -->
+          <div style="display:flex;gap:48px;align-items:center;">
+            <div class="flow-node" style="min-width:90px;">Paper A</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node" style="min-width:90px;">Paper B</div>
+          </div>
+          <div style="display:flex;gap:200px;">
+            <div class="flow-down">↓</div>
+            <div class="flow-down">↓</div>
+          </div>
+          <!-- Journals -->
+          <div style="display:flex;gap:48px;align-items:center;">
+            <div class="flow-node" style="min-width:90px;">Journal X</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node" style="min-width:90px;">Journal Y</div>
+          </div>
+          <div style="display:flex;gap:200px;">
+            <div class="flow-down">↓</div>
+            <div class="flow-down">↓</div>
+          </div>
+          <!-- Research Topics -->
+          <div style="display:flex;gap:48px;align-items:center;">
+            <div class="flow-node end" style="min-width:110px;">Research<br>Topic 1</div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-node end" style="min-width:110px;">Research<br>Topic 2</div>
+          </div>
+          <div style="display:flex;gap:32px;margin-top:20px;flex-wrap:wrap;justify-content:center;">
+            <div class="flow-loop">→ Thin arrow = Knowledge Flow</div>
+            <div class="flow-loop">⇒ Thick arrow = Research Elements Relation Flow</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:13px;color:var(--muted-blue);margin-top:8px;">Vertical chain: <strong>Institution → Author → Paper → Journal → Research Topic.</strong> Knowledge flows down this chain and laterally across institutions, papers, and journals.</p>
+    </div>
+  </div>
+
+  <!-- 6. Impact of Title & Keywords -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+      <h3>6. Impact of Title &amp; Keywords on Citations</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <ul class="key-list">
+        <li><strong>Title is the most important attribute</strong> — main indicator of the subject, used during literature survey, helps marketing and traceability.</li>
+        <li>A good title is informative + attention-grabbing (some are one but not the other).</li>
+        <li>Three aspects shape title behaviour: type of title, length of title, presence of specific markers.</li>
+        <li>Longer titles (with methodology/results) → more attention and citations.</li>
+        <li>Titles with a question mark, colon, or specific geographical region → <strong>lower citation rates.</strong></li>
+        <li>Result-describing titles get more citations than method-describing ones.</li>
+        <li>Review and original articles get more citations than short communications.</li>
+        <li><strong>At least two keywords in the title</strong> increases discovery and citations.</li>
+        <li>Citation styles: <strong>ASCE</strong> (American Society of Civil Engineers) and <strong>IEEE</strong> (Institute of Electrical and Electronics Engineers).</li>
+      </ul>
+    </div>
+  </div>
+</section><!-- /m2 -->
+
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 3
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m3">
+  <div class="module-header">
+    <div class="module-number">MOD 03</div>
+    <div>
+      <h2>Intellectual Property &amp; Patents
+        <small>5 sub-topics — Patent process flowchart is near-guaranteed</small>
+      </h2>
+    </div>
+  </div>
+
+  <!-- 1. IP Definition + Types -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+      <h3>1. Intellectual Property — Definition + Types</h3>
+      <span class="stars">★★★ MUST KNOW</span>
+    </div>
+    <div class="topic-body">
+      <div class="grid-2">
+        <div class="def-box">
+          <div class="label">IP Definition</div>
+          <p>Intellectual Property is the terminology for intangible assets having commercial value, arising from human intelligence, creativity, and imagination, but typically lacking physical form.</p>
+        </div>
+        <div class="def-box">
+          <div class="label">IPR Definition</div>
+          <p>The privileges accorded to the creator/inventor in accordance with law, given in exchange for revealing the creation in the public domain — granting rights to use, sell, distribute, offer for sale, and restrict others from using it without permission.</p>
+        </div>
+      </div>
+      <div class="ip-tree" style="margin-top:16px;">
+        <div class="ip-branch">
+          <h4>1. Copyrights &amp; Related Rights</h4>
+          <ul>
+            <li>Books, music, architecture, carvings</li>
+            <li>Films, software, databases</li>
+          </ul>
+        </div>
+        <div class="ip-branch right">
+          <h4>2. Industrial Property Rights</h4>
+          <ul>
+            <li>Patents</li>
+            <li>Trademarks / Trade Services</li>
+            <li>Industrial Designs</li>
+            <li>Geographical Indications</li>
+          </ul>
+        </div>
+      </div>
+      <table class="styled-table" style="margin-top:16px;">
+        <thead><tr><th>IP Type</th><th>Definition</th></tr></thead>
+        <tbody>
+          <tr><td>Copyright</td><td>Right of owner/creator over publication &amp; distribution of writing, music, pictures, related works (also software, datasheets).</td></tr>
+          <tr><td>Patent</td><td>Legal record giving exclusive right over an invention (as per claims), in a limited geographical area for a limited time, stopping others from making/using/selling it.</td></tr>
+          <tr><td>Trademark</td><td>A sign that distinguishes one owner's goods/services from others'.</td></tr>
+          <tr><td>Trade Services</td><td>Services relating to trade/finance provided by a bank (e.g. letters of credit).</td></tr>
+          <tr><td>Industrial Designs</td><td>Protection of specific ornamental shapes of products against duplication.</td></tr>
+          <tr><td>Geographical Indications (GI)</td><td>A name/sign on products tied to a specific geographical origin, certified for origin and quality standards.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 2. Patent Criteria -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <h3>2. Conditions / Criteria for a Patent — Section 2(1)(j), Patents Act 1970</h3>
+      <span class="stars">★★★ (Asked very often)</span>
+    </div>
+    <div class="topic-body">
+      <div class="criteria-grid">
+        <div class="criteria-card">
+          <div class="num">01</div>
+          <h4>Novelty</h4>
+          <p>"Not part of the State of the Art." The innovation is new and not known anywhere in the world:</p>
+          <ul class="key-list" style="margin-top:8px;">
+            <li>Not in public knowledge</li>
+            <li>Not published anywhere by any means</li>
+            <li>Not claimed in any other specification by any other applicant</li>
+          </ul>
+        </div>
+        <div class="criteria-card">
+          <div class="num">02</div>
+          <h4>Inventive Step</h4>
+          <p>"Not obvious to a person skilled in the art." The innovation:</p>
+          <ul class="key-list" style="margin-top:8px;">
+            <li>Is a technical advancement over existing knowledge</li>
+            <li>Has economic significance</li>
+            <li>Is not obvious to a person skilled in that subject</li>
+          </ul>
+        </div>
+        <div class="criteria-card">
+          <div class="num">03</div>
+          <h4>Capable of Industrial Application</h4>
+          <p>"For the benefit of society." The invention can be made or used in any industry.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Patent Process Flowchart -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>3. The Patent Process in India — Flowchart</h3>
+      <span class="stars">★★★ (Near-guaranteed)</span>
+    </div>
+    <div class="topic-body">
+      <div class="flowchart-wrap">
+        <div class="flowchart-title">Indian Patent Process — Core Flowchart</div>
+        <div class="flow-col">
+          <div class="flow-node start">Prior Art Search</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Choice of Application<br><small style="font-size:10px;opacity:0.8">(Provisional / Complete)</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Filing of Application with IPO<br><small style="font-size:10px;opacity:0.8">(Form-1, Form-2)</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Secret for 18 months → Publishing<br><small style="font-size:10px;opacity:0.8">in Official Journal (every Friday)</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node diamond">Pre-Grant Opposition?<br><small style="font-size:10px;opacity:0.8">within 6 months of publication</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Examination<br><small style="font-size:10px;opacity:0.8">Request via Form-18A within 48 months of filing</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node end">Grant of Patent<br><small style="font-size:10px;opacity:0.8">Published in Official Journal</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Validity: 20 years from filing<br><small style="font-size:10px;opacity:0.8">Renewed annually; non-payment → cancellation</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node diamond">Post-Grant Opposition<br><small style="font-size:10px;opacity:0.8">within 1 year of publication of grant</small></div>
+        </div>
+      </div>
+      <div class="numbers-grid">
+        <div class="num-card"><div class="big-num">18</div><div class="num-label">months — Application kept secret before publishing</div></div>
+        <div class="num-card"><div class="big-num">6</div><div class="num-label">months — Window for pre-grant opposition after publication</div></div>
+        <div class="num-card"><div class="big-num">48</div><div class="num-label">months — Request for examination (Form-18A) deadline</div></div>
+        <div class="num-card"><div class="big-num">20</div><div class="num-label">years — Patent validity from date of filing</div></div>
+        <div class="num-card"><div class="big-num">1</div><div class="num-label">year — Post-grant opposition window after grant publication</div></div>
+        <div class="num-card"><div class="big-num">3–4</div><div class="num-label">years — Approximate total process duration</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Non-Patentable -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div>
+      <h3>4. Non-Patentable Matters — Memorise 5–6 with examples</h3>
+      <span class="stars">★★★ (Scheme lists ~9)</span>
+    </div>
+    <div class="topic-body">
+      <table class="styled-table">
+        <thead><tr><th>Category</th><th>Example</th></tr></thead>
+        <tbody>
+          <tr><td>Contrary to public morality</td><td>Human cloning, gambling method</td></tr>
+          <tr><td>Mere discovery</td><td>Finding a micro-organism freely occurring in nature; law of gravity</td></tr>
+          <tr><td>New form of known substance</td><td>Using aspirin (already patented for fever) for heart treatment</td></tr>
+          <tr><td>Frivolous invention</td><td>Herb-supplemented dough that only changes taste; 100-year calendar; bus timetable</td></tr>
+          <tr><td>Arrangement/rearrangement</td><td>Umbrella fitted with a fan; torch attached to a bucket</td></tr>
+          <tr><td>Atomic Energy Act Section 20(1)</td><td>Compounds of Uranium, Thorium, Plutonium, Radium</td></tr>
+          <tr><td>Literary/dramatic/musical/artistic work</td><td>Books, paintings, computer programs, mathematics — covered by Copyright Act 1957</td></tr>
+          <tr><td>Topography of integrated circuits</td><td>Covered by the SICLD Act 2000</td></tr>
+          <tr><td>Plants and animals</td><td>Whole or part, including seeds/varieties and essentially biological processes</td></tr>
+          <tr><td>Traditional knowledge</td><td>Aggregation or duplication of known properties of traditionally known components</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 5. Patent Rights & Enforcement -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>5. Rights of Patentee + Enforcement + Infringements</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="grid-2">
+        <div class="info-panel">
+          <h4>Rights of Patentee</h4>
+          <ul class="key-list">
+            <li>Owner decides who may or may not use the invention.</li>
+            <li>Invention cannot be made, used, distributed, imported, or sold by others without consent.</li>
+            <li>Owner may permit others on mutually agreed terms.</li>
+            <li><strong>Patent rights are "negative rights"</strong> — owner restricts others rather than gaining a positive right to make. <em>(Important exam phrase.)</em></li>
+          </ul>
+        </div>
+        <div class="info-panel">
+          <h4>Enforcement &amp; Infringements</h4>
+          <ul class="key-list">
+            <li>Owner may sue infringers and seek compensation.</li>
+            <li>Patent rights enforced by judicial courts; court can stop infringement.</li>
+            <li>Main responsibility for monitoring lies with the <strong>patent owner.</strong></li>
+            <li><strong>Direct infringement</strong> — product substantially close to patented product, or marketed/used commercially without permission.</li>
+            <li><strong>Indirect infringement</strong> — some deceit or accidental infringement without intent.</li>
+            <li><strong>Reliefs:</strong> interlocutory/interim injunction; damages or account of profits; permanent injunction.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- /m3 -->
+
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 4A — COPYRIGHTS
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m4a">
+  <div class="module-header">
+    <div class="module-number">MOD 04A</div>
+    <div>
+      <h2>Copyrights
+        <small>Copyright registration flowchart is highest priority</small>
+      </h2>
+    </div>
+  </div>
+
+  <!-- Definition -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M14.31 8a6 6 0 1 0 0 8"/></svg></div>
+      <h3>1. Definition of Copyright</h3>
+      <span class="stars">★★★ MUST KNOW</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box">
+        <div class="label">Definition</div>
+        <p>Copyright is the legal right given by law to the original creator of work in the fields of literature and computer software. The "Related Rights" cover work in dramatics, sound recording, film/video recordings, paintings, architecture, etc. Both are governed by the <strong>Copyright Act, 1957 of India</strong>.</p>
+      </div>
+      <div class="highlight-box">
+        <div class="hl-title">Four Rights Provided by the Act</div>
+        <strong>1. Reproduction</strong> &nbsp;·&nbsp; <strong>2. Communication to the public</strong> &nbsp;·&nbsp; <strong>3. Adaptation</strong> &nbsp;·&nbsp; <strong>4. Translation</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Classes -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h7"/></svg></div>
+      <h3>2. Classes of Copyright</h3>
+      <span class="stars">★★★ MUST KNOW — easy listing marks</span>
+    </div>
+    <div class="topic-body">
+      <div class="criteria-grid">
+        <div class="criteria-card"><div class="num">01</div><h4>Literature</h4><p>Books, essays, research articles, speeches, lectures, computer programs, software, databases</p></div>
+        <div class="criteria-card"><div class="num">02</div><h4>Dramatics</h4><p>Screenplays, dramas</p></div>
+        <div class="criteria-card"><div class="num">03</div><h4>Sound Recordings</h4><p>Recording of sounds on any medium (phonogram, CD-ROM)</p></div>
+        <div class="criteria-card"><div class="num">04</div><h4>Artistic</h4><p>Drawing, painting, logo, map, chart, photographs, architecture, engravings</p></div>
+        <div class="criteria-card"><div class="num">05</div><h4>Musical</h4><p>Musical notations (excluding words/actions sung with music); need not be written down</p></div>
+        <div class="criteria-card"><div class="num">06</div><h4>Cinematograph Film</h4><p>Visual recording by any medium including a sound recording (motion pictures, TV programs)</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Criteria -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <h3>3. Criteria for Copyright</h3>
+      <span class="stars">★★★ Heavily Favoured</span>
+    </div>
+    <div class="topic-body">
+      <div class="criteria-grid">
+        <div class="criteria-card"><div class="num">01</div><h4>Physical/Tangible Form</h4><p>It exists in some physical/tangible form — even scribbled notes count.</p></div>
+        <div class="criteria-card"><div class="num">02</div><h4>Originality (OWA)</h4><p>Created from the author's own independent thinking, void of duplication — Original Work of Authorship (OWA). May resemble existing works but must not be the same.</p></div>
+        <div class="criteria-card"><div class="num">03</div><h4>Creative Effort</h4><p>At least some creative effort — no minimum threshold; subjective, judged by the Registrar of Copyright. Quality/quantity/aesthetic merit don't matter.</p></div>
+      </div>
+      <div class="def-box" style="margin-top:8px;">
+        <div class="label">Key Counter-Examples</div>
+        <p>Merely changing a book's dimensions = NOT copyrightable. An alphabetical phone directory = NOT copyrightable (no creative selection).</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ownership -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+      <h3>4. Ownership of Copyright — Four Rules</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <ul class="key-list">
+        <li>The person who <strong>created the work</strong> is the first/original owner.</li>
+        <li>If the author is an employee contracted by a proprietor, <strong>the proprietor owns it.</strong></li>
+        <li>For government work, <strong>the government is primary owner</strong> (absent any arrangement).</li>
+        <li>The person <strong>delivering a speech</strong> is the first owner.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Rights of Author -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg></div>
+      <h3>5. Copyrights of the Author — Section 14</h3>
+      <span class="stars">★★★ Important</span>
+    </div>
+    <div class="topic-body">
+      <div class="grid-2">
+        <div class="info-panel">
+          <h4>Economic Rights (Proprietary)</h4>
+          <p style="font-size:12px;color:var(--muted-blue);margin-bottom:8px;">Owner can authorize/prohibit:</p>
+          <ul class="key-list">
+            <li>Reproduction</li>
+            <li>Distribution of copies</li>
+            <li>Public performance</li>
+            <li>Broadcasting/communication</li>
+            <li>Translation</li>
+            <li>Adaptation (e.g., novel → screenplay)</li>
+          </ul>
+        </div>
+        <div class="info-panel">
+          <h4>Moral Rights (Personal)</h4>
+          <ul class="key-list">
+            <li><strong>Right of Paternity</strong> — author can always claim authorship even after copyright is transferred (name stays).</li>
+            <li><strong>Right of Integrity</strong> — author can prevent misuse/distortion that harms his honour or reputation.</li>
+          </ul>
+          <div class="def-box" style="margin-top:12px;">
+            <div class="label">Note</div>
+            <p>A single work can have multiple rights holders (e.g., a song has lyricist, composer, singer, musicians, recorder).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Infringement -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+      <h3>6. Copyright Infringement — Criminal &amp; Cognizable</h3>
+      <span class="stars">★★★ Favoured</span>
+    </div>
+    <div class="topic-body">
+      <ul class="key-list" style="margin-bottom:16px;">
+        <li>Making/selling copies without permission; permitting a venue for infringing performance; distributing infringing copies for trade.</li>
+        <li>Public exhibition for trade; importing infringing copies; translating without permission.</li>
+      </ul>
+      <div class="numbers-grid">
+        <div class="num-card"><div class="big-num">6 mo</div><div class="num-label">+ min fine ₹50,000 — Section 63, first conviction</div></div>
+        <div class="num-card"><div class="big-num">1 yr</div><div class="num-label">+ fine ₹1,00,000 — Second/subsequent conviction</div></div>
+        <div class="num-card"><div class="big-num">1958</div><div class="num-label">Copyright Board constituted</div></div>
+        <div class="num-card"><div class="big-num">SI+</div><div class="num-label">Sub-inspector rank or higher can seize without warrant (cognizable offence)</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fair Use -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+      <h3>7. Fair Use Doctrine</h3>
+      <span class="stars">★★★ Favoured</span>
+    </div>
+    <div class="topic-body">
+      <p style="font-size:13px;color:var(--muted-blue);margin-bottom:12px;">Limited use of copyrighted material for teaching/research is allowed under the four-part test:</p>
+      <div class="criteria-grid">
+        <div class="criteria-card"><div class="num">01</div><h4>Character of Use</h4><p>Purely educational, non-profit, personal</p></div>
+        <div class="criteria-card"><div class="num">02</div><h4>Nature of Work</h4><p>Factual, not imaginative</p></div>
+        <div class="criteria-card"><div class="num">03</div><h4>Amount Used</h4><p>Only a small portion (debatable now)</p></div>
+        <div class="criteria-card"><div class="num">04</div><h4>Impact on Value</h4><p>Doesn't affect the author's economic or moral rights</p></div>
+      </div>
+      <div class="def-box" style="margin-top:8px;">
+        <div class="label">Examples</div>
+        <p>Quotation · Reporting current events · Reproduction by teachers/researchers · Work by a Legislature's Secretariat</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright Registration Flowchart -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>8. Copyright Registration — Flowchart</h3>
+      <span class="stars">★★★ HIGHEST PRIORITY</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box" style="margin-bottom:16px;">
+        <div class="label">Key Concept</div>
+        <p>Registration is <strong>NOT compulsory</strong> — work gets automatic copyright once created. Registration only provides prima facie proof/evidence in court disputes. Takes 2–3 months; mandatory 30-day waiting period.</p>
+      </div>
+      <div class="flowchart-wrap">
+        <div class="flowchart-title">Copyright Registration Process</div>
+        <div class="flow-col">
+          <div class="flow-node start">Filing of Application + Fee</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Issue of Diary Number</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">30 Days Mandatory Waiting<br><small style="font-size:10px;opacity:0.8">for Objections</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node diamond">Objection Filed?</div>
+          <div style="display:flex;gap:48px;margin-top:8px;flex-wrap:wrap;justify-content:center;">
+            <div class="branch-arm">
+              <div class="branch-label">NO</div>
+              <div class="flow-node">Scrutinization by Examiner</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node diamond">Discrepancy?</div>
+              <div class="flow-down">↓ Yes</div>
+              <div class="flow-node">Discrepancy Letter sent</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node">Reply from Applicant</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node diamond">Decision of Registrar</div>
+              <div class="flow-down">↓ Approved</div>
+              <div class="flow-node end">Extracts from Register<br>sent to Applicant</div>
+            </div>
+            <div class="branch-arm">
+              <div class="branch-label">YES</div>
+              <div class="flow-node">Letter sent to Applicant</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node">Reply from Applicant</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node">Hearing by Registrar</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node diamond">Satisfied?</div>
+              <div style="display:flex;gap:24px;margin-top:8px;">
+                <div class="branch-arm">
+                  <div class="branch-label">YES</div>
+                  <div class="flow-node end">→ Joins Approval Path</div>
+                </div>
+                <div class="branch-arm">
+                  <div class="branch-label">NO</div>
+                  <div class="flow-node" style="background:linear-gradient(135deg,#8B2635,#A93246);">Application Rejected</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="numbers-grid" style="margin-top:16px;">
+        <div class="num-card"><div class="big-num">60</div><div class="num-label">years validity — literary/dramatic/musical/artistic (from year after author's death)</div></div>
+        <div class="num-card"><div class="big-num">60</div><div class="num-label">years — films/sound recordings/photographs/govt works (from date of publication)</div></div>
+        <div class="num-card"><div class="big-num">30</div><div class="num-label">days mandatory waiting period for objections after filing</div></div>
+      </div>
+      <div class="symbol-row" style="margin-top:16px;">
+        <div class="symbol-card"><div class="sym">©</div><div class="sym-name">Copyright Symbol</div><div class="sym-desc">Letter C in circle — for most works</div></div>
+        <div class="symbol-card"><div class="sym">℗</div><div class="sym-name">Phonogram Symbol</div><div class="sym-desc">Letter P in circle — for sound recordings</div></div>
+      </div>
+    </div>
+  </div>
+</section><!-- /m4a -->
+
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 4B — TRADEMARKS
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m4b">
+  <div class="module-header">
+    <div class="module-number">MOD 04B</div>
+    <div>
+      <h2>Trademarks
+        <small>Registration flowchart is highest priority — Coca-Cola vs Bisleri is a self-contained easy question</small>
+      </h2>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg></div>
+      <h3>10. Definition of Trademark</h3>
+      <span class="stars">★★★ MUST KNOW</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box">
+        <div class="label">Definition</div>
+        <p>A trademark is a unique symbol capable of identifying and differentiating the products/services of one organization from others. "Mark" = a sign, design, phrase, slogan, symbol, name, numeral, device, or combination. Essentially anything that identifies a brand to a consumer.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/></svg></div>
+      <h3>11. Eligibility Criteria for Trademark</h3>
+      <span class="stars">★★★ Favoured</span>
+    </div>
+    <div class="topic-body">
+      <div class="criteria-grid">
+        <div class="criteria-card"><div class="num">01</div><h4>Distinctiveness</h4><p>Must be unique enough to identify the source of goods/services in the market.</p></div>
+        <div class="criteria-card"><div class="num">02</div><h4>Not Merely Descriptive</h4><p>Must NOT merely describe the goods/services. Descriptive marks usually aren't protected, unless they acquire secondary meaning (e.g., "Apple" for electronics).</p></div>
+        <div class="criteria-card"><div class="num">03</div><h4>No Similarity to Prior Marks</h4><p>Must not be similar to existing registered marks.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
+      <h3>12. Designation of Trademark Symbols</h3>
+      <span class="stars">★★★ Easy marks</span>
+    </div>
+    <div class="topic-body">
+      <div class="symbol-row">
+        <div class="symbol-card"><div class="sym">™</div><div class="sym-name">TM Symbol</div><div class="sym-desc">Unregistered trademark — promoting goods</div></div>
+        <div class="symbol-card"><div class="sym">℠</div><div class="sym-name">SM Symbol</div><div class="sym-desc">Unregistered — promoting services</div></div>
+        <div class="symbol-card"><div class="sym">®</div><div class="sym-name">Registered Symbol</div><div class="sym-desc">Registered trademark/service — applicant is legal owner</div></div>
+      </div>
+      <ul class="key-list" style="margin-top:8px;">
+        <li>Validity: <strong>10 years</strong>, extendable every 10 years perpetually.</li>
+        <li>Renewal via form <strong>TM-R</strong> within one year before expiry.</li>
+        <li>Acts: The Trademarks Act, 1999 and Trademarks Rules, 2002.</li>
+        <li>Classified per the <strong>Nice Agreement (1957)</strong>, administered by WIPO. Total <strong>45 classes</strong> — 34 for goods, 11 for services. (149 countries.)</li>
+        <li>Trademark Registry — 5 cities: Delhi, Mumbai, Ahmedabad, Kolkata, Chennai. AP → <strong>Chennai office.</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Trademark Registration Flowchart -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>15. Trademark Registration Process — Flowchart</h3>
+      <span class="stars">★★★ HIGHEST PRIORITY</span>
+    </div>
+    <div class="topic-body">
+      <div class="flowchart-wrap">
+        <div class="flowchart-title">Trademark Registration Flowchart</div>
+        <div class="flow-col">
+          <div class="flow-node start">Prior Art Search<br><small style="font-size:10px;opacity:0.8">CGPDTM / TESS / WIPO Global Brand Database</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Receipt of Applications,<br>Data Entry &amp; Digitization</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Examination of Applications,<br>Approval by Supervisors,<br>Release of Examination Report</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node diamond">Objections?</div>
+          <div style="display:flex;gap:48px;margin-top:8px;flex-wrap:wrap;justify-content:center;">
+            <div class="branch-arm">
+              <div class="branch-label">NO</div>
+              <div class="flow-node end">Publication in<br>Trade Mark Journal</div>
+            </div>
+            <div class="branch-arm">
+              <div class="branch-label">YES</div>
+              <div class="flow-node">Objection Response<br>by Applicant</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node diamond">Supervisors Satisfied?</div>
+              <div style="display:flex;gap:24px;margin-top:8px;">
+                <div class="branch-arm">
+                  <div class="branch-label">YES</div>
+                  <div class="flow-node end">Publication in Journal →</div>
+                </div>
+                <div class="branch-arm">
+                  <div class="branch-label">NO</div>
+                  <div class="flow-node" style="background:linear-gradient(135deg,#8B2635,#A93246);">Application Refused<br><small style="font-size:10px;">Appeal may be made</small></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flow-down">↓ (after Publication)</div>
+          <div class="flow-node diamond">Opposition within 90 days?</div>
+          <div style="display:flex;gap:48px;margin-top:8px;flex-wrap:wrap;justify-content:center;">
+            <div class="branch-arm">
+              <div class="branch-label">NO</div>
+              <div class="flow-node end">Trademark Registered ✓</div>
+            </div>
+            <div class="branch-arm">
+              <div class="branch-label">YES — accepted</div>
+              <div class="flow-node" style="background:linear-gradient(135deg,#8B2635,#A93246);">Application Refused</div>
+            </div>
+          </div>
+        </div>
+        <div class="flow-loop" style="margin-top:16px;">Note: IPAB abolished 2021 — a dedicated IP Division now handles these.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coca Cola vs Bisleri -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg></div>
+      <h3>16. Famous Case Law: Coca-Cola vs. Bisleri</h3>
+      <span class="stars">★★★ Easy self-contained marks</span>
+    </div>
+    <div class="topic-body">
+      <div class="case-study">
+        <div class="case-tag">Case Study — Trademark Infringement</div>
+        <h4>MAAZA — The Mango Drink Dispute</h4>
+        <ol>
+          <li>MAAZA (mango drink) was a registered trademark of Indian company Bisleri International Pvt. Ltd.</li>
+          <li>Bisleri transferred the rights (formulation, IPR, goodwill) to Coca-Cola for the Indian territory.</li>
+          <li>In 2008, Bisleri registered 'Maaza' in Turkey and began exporting under that mark.</li>
+          <li>Coca-Cola filed for permanent injunction and damages for passing-off and infringement.</li>
+          <li>Coca-Cola argued the mark was assigned to them, so manufacturing under it — whether for India sale or export — was infringement.</li>
+          <li><strong>Verdict:</strong> Court granted an interim injunction against Bisleri from using MAAZA in India and for export — held to be infringement.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section><!-- /m4b -->
+
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 5A — INDUSTRIAL DESIGNS
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m5a">
+  <div class="module-header">
+    <div class="module-number">MOD 05A</div>
+    <div>
+      <h2>Industrial Designs
+        <small>Registration flowchart is highest priority — Apple vs Samsung is a brief know</small>
+      </h2>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <h3>17. Definition of Industrial Design</h3>
+      <span class="stars">★★★ MUST KNOW</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box">
+        <div class="label">Definition</div>
+        <p>A 'Design' = the features of shape, configuration, pattern, ornament, or composition of lines or colours applied to any article. Can be 1D, 2D, 3D, or a combination. Created by any industrial process (manual/mechanical/chemical) and judged solely by the eye in the finished article. It does <strong>NOT</strong> include any mode/principle of construction or a merely mechanical device.</p>
+      </div>
+      <div class="highlight-box" style="margin-top:8px;">
+        <div class="hl-title">Famous Examples</div>
+        Coca-Cola contoured bottle (1915) &nbsp;·&nbsp; iPhone body
+      </div>
+      <ul class="key-list" style="margin-top:8px;">
+        <li>Governed by: <strong>The Designs Act, 2000</strong> and Design Rules, 2001 (amended 2008, 2013, 2014, 2019).</li>
+        <li>A design should be: novel &amp; original, applicable to a functional article, visible on the finished article, with no prior publication.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>19. Design Rights &amp; Enforcement</h3>
+      <span class="stars">★★★ Favoured</span>
+    </div>
+    <div class="topic-body">
+      <div class="grid-2">
+        <div class="info-panel">
+          <h4>Design Rights</h4>
+          <ul class="key-list">
+            <li>Registration gives a <strong>monopolistic right</strong> — owner can legally exclude others from reproducing, manufacturing, selling, or dealing in the registered design without consent.</li>
+            <li>Useful where product shape has aesthetic value.</li>
+          </ul>
+        </div>
+        <div class="info-panel">
+          <h4>Enforcement</h4>
+          <ul class="key-list">
+            <li>Owner can sue for piracy of a registered design.</li>
+            <li>Case filed in a court <strong>not lower than District Court.</strong></li>
+            <li>Court first confirms the design is registered under the Act — if not registered, no legal action.</li>
+            <li>If guilty, infringer pays damages of <strong>₹50,000 per registered design infringed.</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg></div>
+      <h3>20. Non-Protectable Designs (Excluded Matter)</h3>
+      <span class="stars">★★★ Favoured</span>
+    </div>
+    <div class="topic-body">
+      <ul class="key-list">
+        <li>Designs against public moral values</li>
+        <li>Flags, emblems, signs of any country</li>
+        <li>Integrated circuits</li>
+        <li>Designs describing the "process of making an article"</li>
+        <li>Books, calendars, certificates, forms, dressmaking patterns, greeting cards, leaflets, maps, postcards, stamps, medals</li>
+        <li>Artistic works under Section 2(c) of Copyright Act (paintings, sculptures, drawings, photographs, architecture)</li>
+        <li>Trademarks</li>
+      </ul>
+      <div class="def-box" style="margin-top:8px;">
+        <div class="label">Duration</div>
+        <p>Registered designs are protected for <strong>10 years</strong>, extendable by <strong>5 years</strong> (total 15) via renewal application (Form-3) with fee before the initial 10 years expire.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design Registration Flowchart -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>22. Design Registration Procedure — Flowchart</h3>
+      <span class="stars">★★★ HIGHEST PRIORITY</span>
+    </div>
+    <div class="topic-body">
+      <div class="flowchart-wrap">
+        <div class="flowchart-title">Industrial Design Registration (Designs Act 2000)</div>
+        <div class="flow-col">
+          <div class="flow-node start">Prior Art Search<br><small style="font-size:10px;opacity:0.8">Design Search Utility (CGPDTM) / WIPO Global Design Database</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Application for Registration<br><small style="font-size:10px;opacity:0.8">Filed at Design Office, Kolkata (Deputy Controller)</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Formality Check</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Substantive Examination<br><small style="font-size:10px;opacity:0.8">within 6 months — queries answered within 6 months</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node diamond">Acceptance?</div>
+          <div style="display:flex;gap:48px;margin-top:8px;flex-wrap:wrap;justify-content:center;">
+            <div class="branch-arm">
+              <div class="branch-label">NO</div>
+              <div class="flow-node">AMEND</div>
+              <div class="flow-down">↓ loops back</div>
+            </div>
+            <div class="branch-arm">
+              <div class="branch-label">YES</div>
+              <div class="flow-node">Acceptance for Registration<br><small style="font-size:10px;opacity:0.8">6 months from date of application</small></div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node">Publication in Official Journal<br><small style="font-size:10px;opacity:0.8">within 1 month of acceptance</small></div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node end">Issue of Certificate</div>
+              <div class="flow-down">↓</div>
+              <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center;">
+                <div class="flow-node" style="font-size:11px;">Cancellation/<br>Opposition</div>
+                <div class="flow-node" style="font-size:11px;background:linear-gradient(135deg,var(--accent),#1a5a96);">Renewal<br>(10 yr + 5 yr)</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="def-box" style="margin-top:8px;">
+        <div class="label">Classification</div>
+        <p>Per the <strong>Locarno Agreement, 1968</strong> — 32 classes and 237 subclasses. Class 1 = foodstuffs; Class 9 = bottles/flasks/containers; Class 32 = graphic symbols, logos, surface patterns.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="9" y1="7" x2="15" y2="7"/><line x1="9" y1="11" x2="15" y2="11"/><line x1="9" y1="15" x2="11" y2="15"/></svg></div>
+      <h3>25. Apple vs. Samsung Case</h3>
+      <span class="stars">★★ Know Briefly</span>
+    </div>
+    <div class="topic-body">
+      <div class="case-study">
+        <div class="case-tag">Case Study — Design &amp; Utility Patent Infringement</div>
+        <h4>iPhone 3GS vs Galaxy i9000</h4>
+        <ol>
+          <li>2011: Apple sued Samsung in the US (N. District of California) for infringing designs and utility patents (screen app grid, tap-to-zoom).</li>
+          <li>Apple submitted side-by-side comparison of iPhone 3GS and i9000 Galaxy S — but images were found tampered to match dimensions.</li>
+          <li>Samsung countersued in multiple countries (South Korea, Japan, Germany, US, ITC).</li>
+          <li>Proceedings ran 7 years.</li>
+          <li><strong>June 2018 settlement</strong> — Samsung ordered to pay <strong>$539 million</strong> to Apple.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section><!-- /m5a -->
+
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 5B — GEOGRAPHICAL INDICATIONS
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m5b">
+  <div class="module-header">
+    <div class="module-number">MOD 05B</div>
+    <div>
+      <h2>Geographical Indications
+        <small>GI definition &amp; examples are heavily favoured; flowchart is highest priority</small>
+      </h2>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg></div>
+      <h3>26. Definition of GI + Examples</h3>
+      <span class="stars">★★★ Heavily Favoured</span>
+    </div>
+    <div class="topic-body">
+      <div class="def-box">
+        <div class="label">Definition</div>
+        <p>A GI is a sign used on products of a particular geographical region that possess qualities or a reputation associated with that region. There's a strong link between the product and its place of production.</p>
+      </div>
+      <div class="highlight-box" style="margin-top:8px;">
+        <div class="hl-title">Key Facts</div>
+        GI introduced in India <strong>2003</strong> · Governed by GI of Goods (Registration &amp; Protection) Act, 1999 and Rules, 2002<br>
+        First GI tag: <strong>Darjeeling Tea (2004)</strong> · 370 GIs registered till May 2020
+      </div>
+      <div class="gi-grid" style="margin-top:16px;">
+        <div class="gi-chip"><div class="gi-name">Darjeeling Tea</div><div class="gi-type">Agriculture</div><div class="gi-state">West Bengal — 1st GI tag, 2004</div></div>
+        <div class="gi-chip"><div class="gi-name">Mysore Silk</div><div class="gi-type">Handicraft</div><div class="gi-state">Karnataka</div></div>
+        <div class="gi-chip"><div class="gi-name">Kashmir Pashmina</div><div class="gi-type">Handicraft</div><div class="gi-state">J&K</div></div>
+        <div class="gi-chip"><div class="gi-name">Banaras Brocades &amp; Sarees</div><div class="gi-type">Handicraft</div><div class="gi-state">Uttar Pradesh</div></div>
+        <div class="gi-chip"><div class="gi-name">Naga Mircha</div><div class="gi-type">Agriculture</div><div class="gi-state">Nagaland</div></div>
+        <div class="gi-chip"><div class="gi-name">Tirupathi Laddu</div><div class="gi-type">Foodstuff</div><div class="gi-state">Andhra Pradesh</div></div>
+        <div class="gi-chip"><div class="gi-name">Phulkari</div><div class="gi-type">Handicraft</div><div class="gi-state">Punjab/Haryana/Rajasthan</div></div>
+        <div class="gi-chip"><div class="gi-name">Basmati</div><div class="gi-type">Agriculture</div><div class="gi-state">India</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>27. Rights Granted to GI Holders</h3>
+      <span class="stars">★★★ Favoured — 4 rights</span>
+    </div>
+    <div class="topic-body">
+      <div class="criteria-grid">
+        <div class="criteria-card"><div class="num">01</div><h4>Right to Grant License</h4><p>Gift/sell/transfer/license/mortgage (must be in writing, registered with Registrar of GI).</p></div>
+        <div class="criteria-card"><div class="num">02</div><h4>Right to Sue</h4><p>Take legal action against unauthorized use.</p></div>
+        <div class="criteria-card"><div class="num">03</div><h4>Right to Exploit</h4><p>Authorize users with exclusive rights to use the goods.</p></div>
+        <div class="criteria-card"><div class="num">04</div><h4>Right to Get Reliefs</h4><p>Obtain relief for violation of GI products.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GI Registration Flowchart -->
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+      <h3>28. GI Registration Process — Flowchart</h3>
+      <span class="stars">★★★ HIGHEST PRIORITY</span>
+    </div>
+    <div class="topic-body">
+      <div class="flowchart-wrap">
+        <div class="flowchart-title">GI Registration Flowchart</div>
+        <div class="flow-col">
+          <div class="flow-node start">Prior Search<br><small style="font-size:10px;opacity:0.8">WIPO / CGPDTM</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">File Application to Registrar of GI<br><small style="font-size:10px;opacity:0.8">+ fee + 3 certified copies of region map</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Acknowledgment by Registrar</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Examination by Examiner</div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Issuance of Examination Report<br><small style="font-size:10px;opacity:0.8">within 2 months</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node">Applicant's Reply<br><small style="font-size:10px;opacity:0.8">within 2 months (discrepancy replied within 1 month)</small></div>
+          <div class="flow-down">↓</div>
+          <div class="flow-node diamond">Decision by Registrar</div>
+          <div style="display:flex;gap:48px;margin-top:8px;flex-wrap:wrap;justify-content:center;">
+            <div class="branch-arm">
+              <div class="branch-label">NOT ACCEPTED</div>
+              <div class="flow-node" style="background:linear-gradient(135deg,#8B2635,#A93246);">Applicant may appeal<br><small style="font-size:10px;">within 1 month at IP Division</small></div>
+            </div>
+            <div class="branch-arm">
+              <div class="branch-label">ACCEPTED</div>
+              <div class="flow-node end">Publication in GI Journal</div>
+              <div class="flow-down">↓</div>
+              <div class="flow-node diamond">Opposition within 4 months?</div>
+              <div style="display:flex;gap:16px;margin-top:8px;">
+                <div class="branch-arm">
+                  <div class="branch-label">NO</div>
+                  <div class="flow-node end">GI Registered ✓<br><small style="font-size:10px;opacity:0.8">10 yrs, renewable</small></div>
+                </div>
+                <div class="branch-arm">
+                  <div class="branch-label">YES</div>
+                  <div class="flow-node" style="background:linear-gradient(135deg,#8B2635,#A93246);">Application Rejected</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="def-box" style="margin-top:8px;">
+        <div class="label">GI Registry Location</div>
+        <p>DPIIT, Ministry of Commerce — head office in <strong>Chennai.</strong> Tag printed on products confirms genuineness + location. Classes: 34 total; Class 33 = alcoholic beverages except beer; Class 34 = tobacco.</p>
+      </div>
+    </div>
+  </div>
+</section><!-- /m5b -->
+
+
+<!-- ════════════════════════════════════════════════════
+     MODULE 5C — PATENT CASE STUDIES
+═══════════════════════════════════════════════════════ -->
+<section class="module" id="m5c">
+  <div class="module-header">
+    <div class="module-number">MOD 05C</div>
+    <div>
+      <h2>Patent Case Studies — Biopiracy
+        <small>Turmeric, Neem &amp; Basmati — collectively show why India built the TKDL</small>
+      </h2>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 7 3 2 3s1 9 10 9zm0 0c0-5 5-9 10-9s-1 9-10 9"/></svg></div>
+      <h3>30. Turmeric (Curcuma) Patent Case</h3>
+      <span class="stars">★★★ Easy marks — self-contained</span>
+    </div>
+    <div class="topic-body">
+      <div class="case-study">
+        <div class="case-tag">Case Study — Biopiracy / Traditional Knowledge</div>
+        <h4>USPTO Patent Revocation — 1997</h4>
+        <ol>
+          <li>In <strong>1995</strong>, the USPTO granted a patent to the University of Mississippi Medical Center for the use of turmeric in wound healing.</li>
+          <li>India's <strong>CSIR</strong> (Council of Scientific &amp; Industrial Research) challenged it, arguing this was traditional knowledge used in India for centuries — not novel.</li>
+          <li>CSIR presented documentary evidence: ancient Sanskrit texts and an old published paper.</li>
+          <li>The USPTO <strong>revoked the patent in 1997</strong> — a landmark win for protecting traditional knowledge.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 7 3 2 3s1 9 10 9zm0 0c0-5 5-9 10-9s-1 9-10 9"/></svg></div>
+      <h3>Neem Patent Case</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="case-study">
+        <div class="case-tag">Case Study — Biopiracy</div>
+        <h4>EPO Patent Revocation — 2000/2005</h4>
+        <ol>
+          <li>The European Patent Office granted a patent (to USDA and W.R. Grace) on a fungicide derived from neem oil.</li>
+          <li>India challenged it as traditional knowledge (neem long used in India as a pesticide/medicine).</li>
+          <li><strong>Patent was revoked in 2000/2005.</strong></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic">
+    <div class="topic-head">
+      <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 22V12m0 0C12 7 7 3 2 3s1 9 10 9zm0 0c0-5 5-9 10-9s-1 9-10 9"/></svg></div>
+      <h3>Basmati Patent Case</h3>
+      <span class="stars">★★</span>
+    </div>
+    <div class="topic-body">
+      <div class="case-study">
+        <div class="case-tag">Case Study — Geographic Origin / Traditional Knowledge</div>
+        <h4>RiceTec USPTO Partial Revocation — 1997–2001</h4>
+        <ol>
+          <li>US company <strong>RiceTec</strong> got a patent on "Basmati rice lines and grains" in 1997.</li>
+          <li>India challenged it; the USPTO struck down most claims.</li>
+          <li>This protected the Basmati name as linked to the Indian subcontinent.</li>
+        </ol>
+      </div>
+      <div class="highlight-box" style="margin-top:16px;">
+        <div class="hl-title">Collective Significance</div>
+        These three cases collectively show why India built the <strong>Traditional Knowledge Digital Library (TKDL)</strong> — a database of India's traditional knowledge to prevent future biopiracy.
+      </div>
+    </div>
+  </div>
+</section><!-- /m5c -->
+
+<!-- Priority Summary -->
+<div class="section-divider"><div class="line"></div><div class="label">Study Priority Summary</div><div class="line"></div></div>
+<div class="topic" style="margin-bottom:32px;">
+  <div class="topic-head">
+    <div class="topic-icon"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <h3>What to Prioritise</h3>
+    <span class="stars">★★★</span>
+  </div>
+  <div class="topic-body">
+    <div class="criteria-grid">
+      <div class="criteria-card">
+        <div class="num" style="color:var(--accent);">T1</div>
+        <h4>Tier 1 — Flowcharts (Near Guaranteed)</h4>
+        <p>Copyright Registration · Trademark Registration · Industrial Design Registration · GI Registration · Research Process (7 boxes + F/FF loops) · Knowledge Flow Citation Network · Patent Process</p>
+      </div>
+      <div class="criteria-card">
+        <div class="num" style="color:var(--accent);">T2</div>
+        <h4>Tier 2 — Definitions + Lists</h4>
+        <p>Copyright definition + classes + criteria · Trademark definition + eligibility + ™/℠/® symbols · Industrial Design definition + excluded matter · GI definition + examples + rights</p>
+      </div>
+      <div class="criteria-card">
+        <div class="num" style="color:var(--accent);">T3</div>
+        <h4>Tier 3 — Case Studies + Short Topics</h4>
+        <p>Coca-Cola vs Bisleri · Apple vs Samsung · Turmeric/Neem/Basmati patent cases · Fair Use Doctrine · Copyright infringement (criminal/cognizable)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <strong>RM &amp; IPR — Complete Study Reference</strong><br>
+  VTU Exam Preparation · All 5 Modules · Compiled from Course Notes
+</footer>
+
+</body>
+</html>
